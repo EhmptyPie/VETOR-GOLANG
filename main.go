@@ -3,11 +3,10 @@ package main
 import "fmt"
 
 func main(){
-	slice := []int{1, 2, 3, 4, 5}
-    slice = append(slice, 6, 7, 8)
+	nomes := []string{"Ana", "Bruno", "Carlos", "Diana", "Eduardo"}
 
-    fmt.Println("Slice completo:", slice)
-    fmt.Println("Tamanho (len):", len(slice))
-    fmt.Println("Capacidade (cap):", cap(slice))
+    fmt.Println("Dois primeiros:", nomes[:2])
+    fmt.Println("Dois últimos:", nomes[len(nomes)-2:])
+    fmt.Println("Nome do meio:", nomes[len(nomes)/2:len(nomes)/2+1])
 
 }
