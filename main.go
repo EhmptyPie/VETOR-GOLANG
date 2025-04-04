@@ -1,12 +1,26 @@
 package main
 
-import "fmt"
+import ("fmt"
+"strings"
+"sort"
+)
 
 func main(){
-	nomes := []string{"Ana", "Bruno", "Carlos", "Diana", "Eduardo"}
-
-    fmt.Println("Dois primeiros:", nomes[:2])
-    fmt.Println("Dois últimos:", nomes[len(nomes)-2:])
-    fmt.Println("Nome do meio:", nomes[len(nomes)/2:len(nomes)/2+1])
+	greeting := "Hello my friends!"
+    fmt.Println(strings.Contains(greeting, "friends"))
+    fmt.Println(strings.ReplaceAll(greeting, 
+        "Hello", "Hi"))
+        fmt.Println(strings.ToUpper(greeting))
+        fmt.Println(strings.Index(greeting,"my"))
+        fmt.Println(strings.Split(greeting, " "))
+        ages := []int {50, 70, 20}
+        sort.Ints(ages)
+        fmt.Println(ages)
+        index := sort.SearchInts(ages, 50)
+        fmt.Println(index)
+        names := []string{"Azul", "Verde", "Vermelho"}
+        sort.Strings(names)
+        fmt.Println(names)
+        fmt.Println(sort.SearchStrings(names, "Azul"))
 
 }
