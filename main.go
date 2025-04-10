@@ -3,16 +3,15 @@ package main
 import ("fmt")
 
 func main(){
-	var numeros [5]int
-	var soma int
-
-	fmt.Println("Digite 5 números inteiros:")
-
-
-	for i := 0; i < 5; i++ {
-		fmt.Printf("Número %d: ", i+1)
-		fmt.Scan(&numeros[i])
-		soma += numeros[i]
+	var idade int
+	fmt.Println("Quantos anos você tem? ")
+	fmt.Scan(&idade)
+	
+	if idade < 18 {
+		fmt.Println("Você é menor de idade")
+	}else if idade <= 60 {
+	fmt.Println("Você é adulto")
+	}else{
+		fmt.Println("Você é idoso")
 	}
-	fmt.Printf("A soma dos números digitados é: %d\n", soma)
 }
