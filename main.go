@@ -1,39 +1,63 @@
 package main
 
-import ("fmt")
+import (
+	"fmt"
+)
 
-func main(){
-var saldo int 
-var numero int
-var escolha int
+var saldo float32
 
-fmt.Println("Insira o valor que você gostaria de sacar :")
-fmt.Scan(&saldo)
+func saque() {
+	var valorSaque float32
+	fmt.Println("Seu saldo atual é:", saldo)
+	fmt.Print("Quanto você quer sacar? ")
+	fmt.Scan(&valorSaque)
 
-    fmt.Println("Escolha uma opção:")
-	fmt.Println("1 - Sacar")
-	fmt.Println("2 - Depositar")
-	fmt.Print("Opção: ")
-	fmt.Scan(&escolha)
-
-	if escolha == 1 {
-		fmt.Print("Insira o valor que você gostaria de sacar: ")
-		fmt.Scan(&numero)
-		if numero > saldo {
-			fmt.Println("Saldo insuficiente.")
-		} else {
-			saldo -= numero
-			fmt.Println("Saque realizado com sucesso!")
-		}
-	} else if escolha == 2 {
-		fmt.Print("Insira o valor que você gostaria de depositar: ")
-		fmt.Scan(&numero)
-		saldo += numero
-		fmt.Println("Depósito realizado com sucesso!")
+	if valorSaque > saldo {
+		fmt.Println("Saldo insuficiente!")
 	} else {
-		fmt.Println("Opção inválida.")
+		saldo -= valorSaque
+		fmt.Println("Saque realizado com sucesso!")
+		fmt.Println("Seu saldo atual é:", saldo)
 	}
-
-	fmt.Println("Saldo atual:", saldo)
 }
-	
+
+func deposito() {
+	var valorDeposito float32
+	fmt.Println("Seu saldo atual é:", saldo)
+	fmt.Print("Quanto você quer depositar? ")
+	fmt.Scan(&valorDeposito)
+
+	if valorDeposito <= 0 {
+		fmt.Println("Valor de depósito inválido!")
+	} else {
+		saldo += valorDeposito
+		fmt.Println("Depósito realizado com sucesso!")
+		fmt.Println("Seu saldo atual é:", saldo)
+	}
+}
+
+func main() {
+	saldo = 10000
+	var opcao int
+
+	for {
+		fmt.Println("\nEscolha uma opção:")
+		fmt.Println("1 - Sacar")
+		fmt.Println("2 - Depositar")
+		fmt.Println("3 - Sair")
+		fmt.Print("Opção: ")
+		fmt.Scan(&opcao)
+
+		switch opcao {
+		case 1:
+			saque()
+		case 2:
+			deposito()
+		case 3:
+			fmt.Println("Saindo... Obrigado!")
+			return
+		default:
+			fmt.Println("Opção inválida! Tente novamente.")
+		}
+	}
+}
