@@ -1,63 +1,32 @@
 package main
 
-import (
-	"fmt"
-)
+import ("fmt")
 
-var saldo float32
 
-func saque() {
-	var valorSaque float32
-	fmt.Println("Seu saldo atual é:", saldo)
-	fmt.Print("Quanto você quer sacar? ")
-	fmt.Scan(&valorSaque)
-
-	if valorSaque > saldo {
-		fmt.Println("Saldo insuficiente!")
-	} else {
-		saldo -= valorSaque
-		fmt.Println("Saque realizado com sucesso!")
-		fmt.Println("Seu saldo atual é:", saldo)
+func dividir (dividendo int, divisor int) (int, string){
+	if divisor == 0{
+		return 0, "Erro na divisão por zero"
 	}
+	return dividendo / divisor, "Sem erro"
+
 }
-
-func deposito() {
-	var valorDeposito float32
-	fmt.Println("Seu saldo atual é:", saldo)
-	fmt.Print("Quanto você quer depositar? ")
-	fmt.Scan(&valorDeposito)
-
-	if valorDeposito <= 0 {
-		fmt.Println("Valor de depósito inválido!")
-	} else {
-		saldo += valorDeposito
-		fmt.Println("Depósito realizado com sucesso!")
-		fmt.Println("Seu saldo atual é:", saldo)
-	}
+func operadocaoBasica( a int, b int) (int, int, int){
+	soma:= a + b
+	subtracao:= a - b
+	multiplicacao:= a * b
+	return soma, subtracao, multiplicacao
 }
-
 func main() {
-	saldo = 10000
-	var opcao int
+	resultado, erro := dividir(10,2)
+	if erro != "Sem erro"{
+		fmt.Println(erro)
+	}else{
+		fmt.Println("Resultado: ", resultado)
 
-	for {
-		fmt.Println("\nEscolha uma opção:")
-		fmt.Println("1 - Sacar")
-		fmt.Println("2 - Depositar")
-		fmt.Println("3 - Sair")
-		fmt.Print("Opção: ")
-		fmt.Scan(&opcao)
-
-		switch opcao {
-		case 1:
-			saque()
-		case 2:
-			deposito()
-		case 3:
-			fmt.Println("Saindo... Obrigado!")
-			return
-		default:
-			fmt.Println("Opção inválida! Tente novamente.")
-		}
 	}
+
+	soma, sub, multip := operadocaoBasica(10, 2)
+	fmt.Println(soma)
+	fmt.Println(sub)
+	fmt.Println(multip)
 }
